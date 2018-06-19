@@ -4,7 +4,7 @@ public class Task {
        public static String removeC (String text){ 
        String newtextRemoveCe = "";//ce=>se
        String newtextRemoveCi = "";//ci=>si
-       String newtextRemoveCk = "";;//ck=>k 
+       String newtextRemoveCk = "";//ck=>k 
        String newtextRemoveC = "";//c=>k
        if(text.indexOf("ce") != -1){
        newtextRemoveCe = text.replace("ce","se"); 
