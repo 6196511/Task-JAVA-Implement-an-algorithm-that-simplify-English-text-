@@ -1,134 +1,112 @@
 public class Task {
-       public static String Change1(String text){ //ce=>se
-       String newtext = "";
+       
+       
+       public static String removeC (String text){ 
+       String newtextRemoveCe = "";//ce=>se
+       String newtextRemoveCi = "";//ci=>si
+       String newtextRemoveCk = "";;//ck=>k 
+       String newtextRemoveC = "";//c=>k
        if(text.indexOf("ce") != -1){
-       newtext = text.replace("ce","se"); 
+       newtextRemoveCe = text.replace("ce","se"); 
        }else{
-       newtext = text;}
-       System.out.println(newtext);
-       String result = newtext;
-       return result;}        
+       newtextRemoveCe = text;
+       }
+       if (newtextRemoveCe.indexOf("ci") != -1){
+       newtextRemoveCi=newtextRemoveCe.replace("ci","si");
+       }else{
+       newtextRemoveCi = newtextRemoveCe;
+       }
+       if (newtextRemoveCi.indexOf("ck") != -1){
+       newtextRemoveCk=newtextRemoveCi.replace("ck","k"); 
+       }else{
+       newtextRemoveCk = newtextRemoveCi;
+       }
+       if (newtextRemoveCk.indexOf("c") != -1){
+       newtextRemoveC=newtextRemoveCk.replace("c","k");         
+       }else{
+       newtextRemoveC = newtextRemoveCk;
+       }
+       System.out.println(newtextRemoveC);
+       String result = newtextRemoveC;
+       return result;
+       }        
        
-       public static String Change2(String text){ //ci=>si
-       String newtext = "";
-       if(text.indexOf("ci") != -1){
-       newtext=text.replace("ci","si"); 
-       }else{
-       newtext=text;}
-       String result = newtext;
-       return result;}
-
-      public static String Change3(String text){//ck=>k 
-       String newtext = "";
-       if(text.indexOf("ck") != -1){
-       newtext=text.replace("ck","k"); 
-       }else{
-       newtext=text;}
-       String result = newtext;
-       return result;}
-         
-       public static String Change4(String text){//c=>k
-       String newtext = "";
-       if (text.indexOf("c") != -1){
-       newtext=text.replace("c","k");
-       }else{
-       newtext=text;}
-       String result = newtext;
-       return result;}
         
-      public static String Change5(String text){//ee=>i
-       String newtext = "";
+       public static String removeDoubles(String text){
+       String newtextRemoveEe = "";//ee=>i
+       String newtextRemoveOo = "";//oo=>u
+       String newtextRemoveDoubles = "";//other double lettert
        if (text.indexOf("ee") != -1){
-       newtext=text.replace("ee","i");
+       newtextRemoveEe=text.replace("ee","i");
        }else{
-       newtext=text;}
-       String result = newtext;
-       return result;}
+       newtextRemoveEe=text;
+       }
+       if (newtextRemoveEe.indexOf("oo") != -1){
+       newtextRemoveOo=newtextRemoveEe.replace("oo","u");
+       }else{
+       newtextRemoveOo=newtextRemoveEe;
+       }
+       newtextRemoveEe = newtextRemoveOo.replaceAll("([A-Za-z])\\1","$1");
+       String result = newtextRemoveEe;
+       return result;
+       }
 
-       public static String Change6(String text){//oo=>u
-       String newtext = "";
-        if (text.indexOf("oo") != -1){
-       newtext=text.replace("oo","u");
-       }else{
-       newtext=text;}
-       String result = newtext;
-       return result;}
        
-       public static String Change7(String text){//double letter
-       String newtext = "";
-       newtext = text.replaceAll("([A-Za-z])\\1","$1");
-       String result = newtext;
-       return result;}
-
-       public static String Change8(String text){//remove e from the end of the word>1 length
-       String newtext = "";
+       public static String removeEInTheEnd(String text){//remove e from the end of the word>1 length
+       String newtextRemoveE = "";
        String[] parts = text.split(" ");
-       String part1 = "";
-       for (String part : parts) 
-       {if (part.length()>1){
-       part1 = part.replaceAll("e(?!\\S)","");
-       newtext = newtext.concat(part1+' ');
-        }else{
-       part1=part;
-       newtext = newtext.concat(part1+' ');}}
-       String result = newtext;
-       return result;}
+       String partRemoveE = "";
+       for (String part : parts) {
+            if (part.length()>1){
+            partRemoveE = part.replaceAll("e(?!\\S)","");
+            newtextRemoveE = newtextRemoveE.concat(partRemoveE+' ');
+            }else{
+            partRemoveE=part;
+            newtextRemoveE = newtextRemoveE.concat(partRemoveE+' ');
+            }
+       }
+       String result = newtextRemoveE;
+       return result;
+       }
+       
+       
+       public static String removeArticles(String textOriginal, String textEdited){
+       String newtextRemoveArt = "";
+       String partRemoveArt = "";
+       String[] partsOriginal = textOriginal.split(" ");
+       String[] partsEdited = textEdited.split(" ");
+       for (int i = 0; i < partsOriginal.length; i++)
+            if (partsOriginal[i].equals("a")||partsOriginal[i].equals("A")){;
+            }else if(partsOriginal[i].equals("the")||partsOriginal[i].equals("The")){
+            ;
+            }else if(partsOriginal[i].equals("an")||partsOriginal[i].equals("An")){
+            ;
+            }else{
+            partRemoveArt = partsEdited[i];
+            newtextRemoveArt = newtextRemoveArt.concat(partRemoveArt+' ');
+       }
+       String result = newtextRemoveArt;
+       return result;
+       }
 
-       public static String Change9(String text){//remove 'a' article
-       String newtext = "";
-       newtext = text.replaceAll("\\ba\\b|\\bA\\b","");
-       String result = newtext;
-       return result;}
 
-       public static String Change10(String text){//remove 'an' article
-       String newtext = "";
-       newtext = text.replaceAll("\\ban\\b|\\bAn\\b","");
-       String result = newtext;
-       return result;}
 
-       public static String Change11(String text){//remove 'th (the)' article
-       String newtext = "";
-       newtext = text.replaceAll("\\bth\\b|\\bTh\\b","");
-       String result = newtext;
-       return result;}
-
-       public static void main(String args[]) {
+       public static void main(String args[]){
  
+       String TEXT_ORIGINAL = "aa a AA A The An cacao and coffee success a an the e me be thhe Ann";
+       System.out.println("ORIGINAL TEXT: " +TEXT_ORIGINAL);
+       String text1 = "";
+       String text2 = "";
+       String text3 = "";
+       String text4 = "";
 
-       String text0 = "A The An cacao and coffee success a an the e me be";//original text
-       System.out.println("ORIGINAL TEXT: " +text0);
-       String text1 = "";//ce=>se
-       String text2 = "";//ci=>si
-       String text3 = "";//ck=>k 
-       String text4 = "";//c=>k
-       String text5 = "";//ee=>i
-       String text6 = "";//oo=>u
-       String text7 = "";//double letter
-       String text8 = "";//remove e from the end of the word 
-       String text9 = "";//remove 'a' article
-       String text10 = "";//remove 'an' article
-       String text11 = "";//remove 'th (the)' article
- 
-       text1=Change1(text0); 
+       text1=removeC(TEXT_ORIGINAL); 
        System.out.println(text1);
-       text2=Change2(text1);
-       System.out.println(text2);
-       text3=Change3(text2); 
+       text2=removeDoubles(text1); 
+       System.out.println(text2); 
+       text3=removeEInTheEnd(text2);  
        System.out.println(text3);
-       text4=Change4(text3);
-       System.out.println(text4);
-       text5=Change5(text4);  
-       System.out.println(text5);
-       text6=Change6(text5); 
-       System.out.println(text6);
-       text7=Change7(text6);  
-       System.out.println(text7);
-       text8=Change8(text7);  
-       System.out.println(text8);
-       text9=Change9(text8); 
-       System.out.println(text9); 
-       text10=Change10(text9);  
-       System.out.println(text10);
-       text11 = Change11(text10);
-       System.out.println(text11);
-       System.out.println("FINAL RESULT: " +text11); }}
+       text4=removeArticles(TEXT_ORIGINAL, text3); 
+       System.out.println("FINAL RESULT: " +text4); 
+       }
+}
