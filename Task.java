@@ -26,7 +26,6 @@ public class Task {
        }else{
        newtextRemoveC = newtextRemoveCk;
        }
-       System.out.println(newtextRemoveC);
        String result = newtextRemoveC;
        return result;
        }        
