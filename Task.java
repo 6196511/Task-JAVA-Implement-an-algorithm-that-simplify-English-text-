@@ -2,51 +2,46 @@ public class Task {
        
        
        public static String removeC (String text){ 
-       String newtextRemoveCe = "";//ce=>se
-       String newtextRemoveCi = "";//ci=>si
-       String newtextRemoveCk = "";//ck=>k 
-       String newtextRemoveC = "";//c=>k
-       if(text.indexOf("ce") != -1){
-       newtextRemoveCe = text.replace("ce","se"); 
+       String newtextRemoveC = "";
+       if (text.contains("ce")){
+       newtextRemoveC = text.replace("ce","se"); 
        }else{
-       newtextRemoveCe = text;
+       newtextRemoveC = text;
        }
-       if (newtextRemoveCe.indexOf("ci") != -1){
-       newtextRemoveCi=newtextRemoveCe.replace("ci","si");
+       if (newtextRemoveC.contains("ci")){
+       newtextRemoveC=newtextRemoveC.replace("ci","si");
        }else{
-       newtextRemoveCi = newtextRemoveCe;
+       ;
        }
-       if (newtextRemoveCi.indexOf("ck") != -1){
-       newtextRemoveCk=newtextRemoveCi.replace("ck","k"); 
+       if (newtextRemoveC.contains("ck")){
+       newtextRemoveC=newtextRemoveC.replace("ck","k"); 
        }else{
-       newtextRemoveCk = newtextRemoveCi;
+       ;
        }
-       if (newtextRemoveCk.indexOf("c") != -1){
-       newtextRemoveC=newtextRemoveCk.replace("c","k");         
+       if (newtextRemoveC.contains("c")){
+       newtextRemoveC=newtextRemoveC.replace("c","k");         
        }else{
-       newtextRemoveC = newtextRemoveCk;
+       ;
        }
        String result = newtextRemoveC;
        return result;
        }        
-       
-        
+      
+           
        public static String removeDoubles(String text){
-       String newtextRemoveEe = "";//ee=>i
-       String newtextRemoveOo = "";//oo=>u
-       String newtextRemoveDoubles = "";//other double lettert
-       if (text.indexOf("ee") != -1){
-       newtextRemoveEe=text.replace("ee","i");
+       String newtextRemoveDoubles = "";
+       if (text.contains("ee")){
+       newtextRemoveDoubles=text.replace("ee","i");
        }else{
-       newtextRemoveEe=text;
+       newtextRemoveDoubles=text;
        }
-       if (newtextRemoveEe.indexOf("oo") != -1){
-       newtextRemoveOo=newtextRemoveEe.replace("oo","u");
+       if (newtextRemoveDoubles.contains("oo")){
+       newtextRemoveDoubles=newtextRemoveDoubles.replace("oo","u");
        }else{
-       newtextRemoveOo=newtextRemoveEe;
+       ;
        }
-       newtextRemoveEe = newtextRemoveOo.replaceAll("([A-Za-z])\\1","$1");
-       String result = newtextRemoveEe;
+       newtextRemoveDoubles = newtextRemoveDoubles.replaceAll("([A-Za-z])\\1+","$1");
+       String result = newtextRemoveDoubles;
        return result;
        }
 
@@ -89,23 +84,18 @@ public class Task {
        }
 
 
-
        public static void main(String args[]){
  
-       String TEXT_ORIGINAL = "aa a AA A The An cacao and coffee success a an the e me be thhe Ann";
+       String TEXT_ORIGINAL = "Bob Thuuuuu aa a AA A The An cacao and coffee success a an the e me be thhe Ann";
        System.out.println("ORIGINAL TEXT: " +TEXT_ORIGINAL);
-       String text1 = "";
-       String text2 = "";
-       String text3 = "";
-       String text4 = "";
-
-       text1=removeC(TEXT_ORIGINAL); 
-       System.out.println(text1);
-       text2=removeDoubles(text1); 
-       System.out.println(text2); 
-       text3=removeEInTheEnd(text2);  
-       System.out.println(text3);
-       text4=removeArticles(TEXT_ORIGINAL, text3); 
-       System.out.println("FINAL RESULT: " +text4); 
+       String textEdited = "";
+       textEdited=removeC(TEXT_ORIGINAL); 
+       System.out.println(textEdited);
+       textEdited=removeDoubles(textEdited); 
+       System.out.println(textEdited); 
+       textEdited=removeEInTheEnd(textEdited);  
+       System.out.println(textEdited);
+       textEdited=removeArticles(TEXT_ORIGINAL, textEdited); 
+       System.out.println("FINAL RESULT: " +textEdited); 
        }
 }
