@@ -46,7 +46,7 @@ public class Task {
        }
 
        
-       public static String removeEInTheEnd(String text){//remove e from the end of the word>1 length
+       public static String removeEInTheEnd(String text){
        String newtextRemoveE = "";
        String[] parts = text.split(" ");
        String partRemoveE = "";
