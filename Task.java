@@ -85,7 +85,6 @@ public class Task {
 
 
        public static void main(String args[]){
- 
        String TEXT_ORIGINAL = "Bob Thuuuuu aa a AA A The An cacao and coffee success a an the e me be thhe Ann";
        System.out.println("ORIGINAL TEXT: " +TEXT_ORIGINAL);
        String textEdited = "";
